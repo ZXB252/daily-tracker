@@ -14,15 +14,15 @@
 <meta name="format-detection" content="telephone=no">
 
 <!-- iOS Splash Screen -->
-<meta name="apple-touch-startup-image" content="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23f5f5f0' width='100' height='100'/><text x='50' y='55' text-anchor='middle' font-size='40'>📋</text></svg>">
+<meta name="apple-touch-startup-image" content="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23f5f5f0' width='100' height='100'/><text x='50' y='55' text-anchor='middle' font-size='40'>馃搵</text></svg>">
 
 <!-- Favicon / Touch Icons -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23f5f5f0' rx='20' width='100' height='100'/><text x='50' y='65' text-anchor='middle' font-size='50'>📋</text></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%23f5f5f0' rx='36' width='180' height='180'/><text x='90' y='115' text-anchor='middle' font-size='90'>📋</text></svg>">
-<link rel="apple-touch-icon-precomposed" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%23f5f5f0' rx='36' width='180' height='180'/><text x='90' y='115' text-anchor='middle' font-size='90'>📋</text></svg>">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23f5f5f0' rx='20' width='100' height='100'/><text x='50' y='65' text-anchor='middle' font-size='50'>馃搵</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%23f5f5f0' rx='36' width='180' height='180'/><text x='90' y='115' text-anchor='middle' font-size='90'>馃搵</text></svg>">
+<link rel="apple-touch-icon-precomposed" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%23f5f5f0' rx='36' width='180' height='180'/><text x='90' y='115' text-anchor='middle' font-size='90'>馃搵</text></svg>">
 
 <!-- Manifest -->
-<link rel="manifest" href="data:application/json,{%22name%22:%22Project%2050%22,%22short_name%22:%22P50%22,%22display%22:%22standalone%22,%22background_color%22:%22%23f5f5f0%22,%22theme_color%22:%22%23f5f5f0%22,%22icons%22:[{%22src%22:%22data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%23f5f5f0' rx='36' width='180' height='180'/><text x='90' y='115' text-anchor='middle' font-size='90'>📋</text></svg>%22,%22sizes%22:%22180x180%22,%22type%22:%22image/svg+xml%22}]}">
+<link rel="manifest" href="data:application/json,{%22name%22:%22Project%2050%22,%22short_name%22:%22P50%22,%22display%22:%22standalone%22,%22background_color%22:%22%23f5f5f0%22,%22theme_color%22:%22%23f5f5f0%22,%22icons%22:[{%22src%22:%22data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%23f5f5f0' rx='36' width='180' height='180'/><text x='90' y='115' text-anchor='middle' font-size='90'>馃搵</text></svg>%22,%22sizes%22:%22180x180%22,%22type%22:%22image/svg+xml%22}]}">
 
 <title>Project 50</title>
 <style>
@@ -52,7 +52,7 @@
   --radius-sm: 8px;
 }
 body { background: var(--bg); font-family: -apple-system, "PingFang SC", "Helvetica Neue", Arial, sans-serif; font-size: 15px; color: var(--text1); min-height: 100vh; padding-bottom: 40px; }
-/* 添加到主屏幕后自动适配刘海 */
+/* 娣诲姞鍒颁富灞忓箷鍚庤嚜鍔ㄩ€傞厤鍒樻捣 */
 @supports (padding-top: env(safe-area-inset-top)) {
   body { padding-top: env(safe-area-inset-top); }
 }
@@ -194,7 +194,7 @@ html, body { -webkit-overflow-scrolling: touch; }
 .p50-dot-num { font-size: 9px; color: var(--text3); }
 .p50-dot.full .p50-dot-num { color: #fff; }
 
-/* ====== Goal (短期目标) ====== */
+/* ====== Goal (鐭湡鐩爣) ====== */
 .goal-swipe-wrap { position: relative; overflow: hidden; margin-bottom: 12px; border-radius: var(--radius); }
 .goal-swipe-bg { position: absolute; top: 0; right: 0; bottom: 0; width: 80px; display: flex; align-items: center; justify-content: center; border-radius: 0 var(--radius) var(--radius) 0; }
 .goal-swipe-del { width: 100%; height: 100%; background: var(--red); color: #fff; border: none; font-size: 14px; font-weight: 500; cursor: pointer; border-radius: 0 var(--radius) var(--radius) 0; display: flex; align-items: center; justify-content: center; }
@@ -238,7 +238,7 @@ html, body { -webkit-overflow-scrolling: touch; }
 .goal-form-unit { font-size: 13px; color: var(--text3); align-self: center; white-space: nowrap; }
 .goal-form-btn { height: 40px; padding: 0 20px; background: var(--accent); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 14px; cursor: pointer; white-space: nowrap; }
 
-/* ====== Pomodoro (番茄钟) ====== */
+/* ====== Pomodoro (鐣寗閽? ====== */
 .pomo-main { background: var(--card); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 24px 16px; text-align: center; margin-bottom: 12px; }
 .pomo-timer-ring { position: relative; width: 200px; height: 200px; margin: 0 auto 20px; }
 .pomo-ring-svg { transform: rotate(-90deg); }
@@ -269,7 +269,7 @@ html, body { -webkit-overflow-scrolling: touch; }
 .pomo-history-item .phi-time { color: var(--text2); }
 .pomo-sound-toggle { display: flex; align-items: center; gap: 6px; justify-content: center; margin-top: 12px; font-size: 12px; color: var(--text3); cursor: pointer; }
 
-/* ====== Expense (日常花费) ====== */
+/* ====== Expense (鏃ュ父鑺辫垂) ====== */
 .expense-add-wrap { background: var(--card); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 12px; }
 .expense-add-row { display: flex; gap: 8px; align-items: flex-end; }
 .expense-add-row-2 { margin-top: 8px; }
@@ -303,12 +303,12 @@ html, body { -webkit-overflow-scrolling: touch; }
 
 <div class="header">
   <div class="header-top">
-    <div class="header-title">工作清单 & Project 50</div>
+    <div class="header-title">宸ヤ綔娓呭崟 & Project 50</div>
     <div class="date-nav">
-      <button class="btn-date-arrow" onclick="shiftDay(-1)">‹</button>
-      <button class="date-nav-date" id="navDateBtn" onclick="toggleCalPopup()">📅 <span id="navDateText">—</span></button>
-      <button class="btn-today" onclick="goToday()">今天</button>
-      <button class="btn-date-arrow" onclick="shiftDay(1)">›</button>
+      <button class="btn-date-arrow" onclick="shiftDay(-1)">鈥?/button>
+      <button class="date-nav-date" id="navDateBtn" onclick="toggleCalPopup()">馃搮 <span id="navDateText">鈥?/span></button>
+      <button class="btn-today" onclick="goToday()">浠婂ぉ</button>
+      <button class="btn-date-arrow" onclick="shiftDay(1)">鈥?/button>
       <div class="cal-popup-overlay" id="calOverlay" onclick="closeCalPopup()"></div>
       <div class="cal-popup" id="calPopup"></div>
     </div>
@@ -316,30 +316,30 @@ html, body { -webkit-overflow-scrolling: touch; }
 </div>
 
 <div class="tabs">
-  <div class="tab active" id="tab-tasks" onclick="switchTab('tasks')">工作事项</div>
+  <div class="tab active" id="tab-tasks" onclick="switchTab('tasks')">宸ヤ綔浜嬮」</div>
   <div class="tab" id="tab-p50" onclick="switchTab('p50')">Project 50</div>
-  <div class="tab" id="tab-goals" onclick="switchTab('goals')">短期目标</div>
-  <div class="tab" id="tab-pomo" onclick="switchTab('pomo')">番茄钟</div>
-  <div class="tab" id="tab-expense" onclick="switchTab('expense')">日常花费</div>
+  <div class="tab" id="tab-goals" onclick="switchTab('goals')">鐭湡鐩爣</div>
+  <div class="tab" id="tab-pomo" onclick="switchTab('pomo')">鐣寗閽?/div>
+  <div class="tab" id="tab-expense" onclick="switchTab('expense')">鏃ュ父鑺辫垂</div>
 </div>
 
 <!-- Tasks Panel -->
 <div class="panel active" id="panel-tasks">
   <div class="summary">
-    <div class="scard"><div class="scard-label">今日事项</div><div class="scard-val accent" id="s-total">0</div></div>
-    <div class="scard"><div class="scard-label">已完成</div><div class="scard-val green" id="s-done">0</div></div>
-    <div class="scard"><div class="scard-label">完成率</div><div class="scard-val amber" id="s-rate">—</div></div>
+    <div class="scard"><div class="scard-label">浠婃棩浜嬮」</div><div class="scard-val accent" id="s-total">0</div></div>
+    <div class="scard"><div class="scard-label">宸插畬鎴?/div><div class="scard-val green" id="s-done">0</div></div>
+    <div class="scard"><div class="scard-label">瀹屾垚鐜?/div><div class="scard-val amber" id="s-rate">鈥?/div></div>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="s-bar" style="width:0%"></div></div>
   <div class="add-row">
-    <input id="taskInput" placeholder="输入今日事项…" maxlength="60" onkeydown="if(event.key==='Enter')addTask()">
+    <input id="taskInput" placeholder="杈撳叆浠婃棩浜嬮」鈥? maxlength="60" onkeydown="if(event.key==='Enter')addTask()">
     <select id="taskTag">
-      <option value="q1">重要紧急</option>
-      <option value="q2">重要不紧急</option>
-      <option value="q3">不重要紧急</option>
-      <option value="q4">不重要不紧急</option>
+      <option value="q1">閲嶈绱ф€?/option>
+      <option value="q2">閲嶈涓嶇揣鎬?/option>
+      <option value="q3">涓嶉噸瑕佺揣鎬?/option>
+      <option value="q4">涓嶉噸瑕佷笉绱ф€?/option>
     </select>
-    <button class="btn-add" onclick="addTask()">+ 添加</button>
+    <button class="btn-add" onclick="addTask()">+ 娣诲姞</button>
   </div>
   <div id="taskList"></div>
 </div>
@@ -367,24 +367,24 @@ html, body { -webkit-overflow-scrolling: touch; }
 </div>
 
 <script>
-const WEEK = ['日','一','二','三','四','五','六'];
+const WEEK = ['鏃?,'涓€','浜?,'涓?,'鍥?,'浜?,'鍏?];
 const TOTAL_DAYS = 50;
 
 const HABITS = [
-  { id: 'wakeup',   icon: '🌅', text: '早起',       sub: (d) => isWeekend(d) ? '周末 6:15 前起床' : '平日 5:15 前起床' },
-  { id: 'morning',  icon: '🧘', text: '晨间活动',   sub: () => '1小时，不看手机' },
-  { id: 'exercise', icon: '🏃', text: '运动/健身',  sub: () => '1小时' },
-  { id: 'reading',  icon: '📖', text: '阅读',        sub: () => '30–50页' },
-  { id: 'learning', icon: '💡', text: '学习',        sub: () => '1小时' },
-  { id: 'diet',     icon: '🥗', text: '健康饮食',   sub: () => '全天保持' },
-  { id: 'log',      icon: '✍️', text: '记录进度',   sub: () => '今日复盘' },
+  { id: 'wakeup',   icon: '馃寘', text: '鏃╄捣',       sub: (d) => isWeekend(d) ? '鍛ㄦ湯 6:15 鍓嶈捣搴? : '骞虫棩 5:15 鍓嶈捣搴? },
+  { id: 'morning',  icon: '馃', text: '鏅ㄩ棿娲诲姩',   sub: () => '1灏忔椂锛屼笉鐪嬫墜鏈? },
+  { id: 'exercise', icon: '馃弮', text: '杩愬姩/鍋ヨ韩',  sub: () => '1灏忔椂' },
+  { id: 'reading',  icon: '馃摉', text: '闃呰',        sub: () => '30鈥?0椤? },
+  { id: 'learning', icon: '馃挕', text: '瀛︿範',        sub: () => '1灏忔椂' },
+  { id: 'diet',     icon: '馃', text: '鍋ュ悍楗',   sub: () => '鍏ㄥぉ淇濇寔' },
+  { id: 'log',      icon: '鉁嶏笍', text: '璁板綍杩涘害',   sub: () => '浠婃棩澶嶇洏' },
 ];
 
 const QUADRANTS = [
-  { id: 'q1', cls: 'tg-q1', label: '重要 · 紧急' },
-  { id: 'q2', cls: 'tg-q2', label: '重要 · 不紧急' },
-  { id: 'q3', cls: 'tg-q3', label: '不重要 · 紧急' },
-  { id: 'q4', cls: 'tg-q4', label: '不重要 · 不紧急' },
+  { id: 'q1', cls: 'tg-q1', label: '閲嶈 路 绱ф€? },
+  { id: 'q2', cls: 'tg-q2', label: '閲嶈 路 涓嶇揣鎬? },
+  { id: 'q3', cls: 'tg-q3', label: '涓嶉噸瑕?路 绱ф€? },
+  { id: 'q4', cls: 'tg-q4', label: '涓嶉噸瑕?路 涓嶇揣鎬? },
 ];
 
 function isWeekend(dateStr) {
@@ -401,7 +401,7 @@ function todayStr() {
 
 function formatDisplay(s) {
   const d = new Date(s + 'T00:00:00');
-  return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日 周${WEEK[d.getDay()]}`;
+  return `${d.getFullYear()}骞?{d.getMonth()+1}鏈?{d.getDate()}鏃?鍛?{WEEK[d.getDay()]}`;
 }
 
 function shiftDay(n) {
@@ -412,7 +412,7 @@ function shiftDay(n) {
 }
 function goToday() { currentDate = todayStr(); closeCalPopup(); renderAll(); }
 
-/* ---- 内置日历弹窗 ---- */
+/* ---- 鍐呯疆鏃ュ巻寮圭獥 ---- */
 let calYear, calMonth;
 
 function toggleCalPopup() {
@@ -449,12 +449,12 @@ function renderCalPopup() {
   const cells = [];
   for (let i = 0; i < firstDow; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) cells.push(d);
-  const MONTHS = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
-  const DOWS = ['日','一','二','三','四','五','六'];
+  const MONTHS = ['1鏈?,'2鏈?,'3鏈?,'4鏈?,'5鏈?,'6鏈?,'7鏈?,'8鏈?,'9鏈?,'10鏈?,'11鏈?,'12鏈?];
+  const DOWS = ['鏃?,'涓€','浜?,'涓?,'鍥?,'浜?,'鍏?];
   let html = `<div class="cal-popup-header">
-    <button class="cal-popup-arrow" onclick="calPrevMonth()">‹</button>
-    <span class="cal-popup-month">${calYear}年 ${MONTHS[calMonth-1]}</span>
-    <button class="cal-popup-arrow" onclick="calNextMonth()">›</button>
+    <button class="cal-popup-arrow" onclick="calPrevMonth()">鈥?/button>
+    <span class="cal-popup-month">${calYear}骞?${MONTHS[calMonth-1]}</span>
+    <button class="cal-popup-arrow" onclick="calNextMonth()">鈥?/button>
   </div>
   <div class="cal-popup-grid">
     ${DOWS.map(d => `<div class="cal-popup-dow">${d}</div>`).join('')}
@@ -470,7 +470,7 @@ function renderCalPopup() {
     }).join('')}
   </div>
   <div class="cal-popup-footer">
-    <button class="cal-popup-today-btn" onclick="calPick('${today}')">回到今天</button>
+    <button class="cal-popup-today-btn" onclick="calPick('${today}')">鍥炲埌浠婂ぉ</button>
   </div>`;
   document.getElementById('calPopup').innerHTML = html;
 }
@@ -516,13 +516,13 @@ function renderTasks() {
   const total = tasks.length, done = tasks.filter(t => t.done).length;
   document.getElementById('s-total').textContent = total;
   document.getElementById('s-done').textContent = done;
-  document.getElementById('s-rate').textContent = total ? Math.round(done/total*100)+'%' : '—';
+  document.getElementById('s-rate').textContent = total ? Math.round(done/total*100)+'%' : '鈥?;
   document.getElementById('s-bar').style.width = total ? (done/total*100)+'%' : '0%';
   const pending = tasks.filter(t => !t.done);
   const finished = tasks.filter(t => t.done);
   let html = '';
   if (!tasks.length) {
-    html = '<div class="empty-hint">暂无事项，添加今天的工作任务吧</div>';
+    html = '<div class="empty-hint">鏆傛棤浜嬮」锛屾坊鍔犱粖澶╃殑宸ヤ綔浠诲姟鍚?/div>';
   } else {
     QUADRANTS.forEach(q => {
       const group = pending.filter(t => t.tag === q.id);
@@ -531,14 +531,14 @@ function renderTasks() {
         <div class="task-group-header">
           <div class="task-group-dot"></div>
           <div class="task-group-name">${q.label}</div>
-          <div class="task-group-count">${group.length} 项</div>
+          <div class="task-group-count">${group.length} 椤?/div>
         </div>
         ${group.map(t => taskHTML(t)).join('')}
       </div>`;
     });
     if (finished.length) {
       html += `<div class="done-section">
-        <span class="done-toggle" onclick="toggleDoneSection(this)">▸ 已完成 ${finished.length} 项</span>
+        <span class="done-toggle" onclick="toggleDoneSection(this)">鈻?宸插畬鎴?${finished.length} 椤?/span>
         <div class="done-list" style="display:${showDone?'block':'none'}">
           ${finished.map(t => taskHTML(t)).join('')}
         </div>
@@ -552,7 +552,7 @@ function toggleDoneSection(el) {
   const list = el.nextElementSibling;
   showDone = list.style.display === 'none';
   list.style.display = showDone ? 'block' : 'none';
-  el.textContent = (showDone ? '▾' : '▸') + ` 已完成 ${list.children.length} 项`;
+  el.textContent = (showDone ? '鈻? : '鈻?) + ` 宸插畬鎴?${list.children.length} 椤筦;
 }
 
 function taskHTML(t) {
@@ -561,7 +561,7 @@ function taskHTML(t) {
       <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <div class="task-body"><div class="task-text">${escHtml(t.text)}</div></div>
-    <button class="task-del" onclick="deleteTask(${t.id})">×</button>
+    <button class="task-del" onclick="deleteTask(${t.id})">脳</button>
   </div>`;
 }
 
@@ -575,7 +575,7 @@ function startP50() {
 }
 
 function resetP50() {
-  if (!confirm('确认重置 Project 50？所有打卡记录将清空。')) return;
+  if (!confirm('纭閲嶇疆 Project 50锛熸墍鏈夋墦鍗¤褰曞皢娓呯┖銆?)) return;
   localStorage.removeItem('p50');
   renderP50();
 }
@@ -610,7 +610,7 @@ function saveNote() {
   dd.note = document.getElementById('p50-note').value;
   saveP50(p50);
   const btn = document.querySelector('.btn-save-note');
-  if (btn) { btn.textContent = '已保存'; setTimeout(() => btn.textContent = '保存', 1200); }
+  if (btn) { btn.textContent = '宸蹭繚瀛?; setTimeout(() => btn.textContent = '淇濆瓨', 1200); }
 }
 
 function streakCount(p50) {
@@ -636,9 +636,9 @@ function renderP50() {
 
   if (!p50) {
     html = `<div class="p50-start">
-      <p><strong>Project 50</strong> — 连续50天<br>每天完成7项自律习惯，重塑生活节律</p>
-      <p style="font-size:13px;color:var(--text3);margin-bottom:16px;">🌅 早起 &nbsp;🧘 晨间活动 &nbsp;🏃 运动<br>📖 阅读 &nbsp;💡 学习 &nbsp;🥗 健康饮食 &nbsp;✍️ 记录</p>
-      <button class="btn-start" onclick="startP50()">现在开始</button>
+      <p><strong>Project 50</strong> 鈥?杩炵画50澶?br>姣忓ぉ瀹屾垚7椤硅嚜寰嬩範鎯紝閲嶅鐢熸椿鑺傚緥</p>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:16px;">馃寘 鏃╄捣 &nbsp;馃 鏅ㄩ棿娲诲姩 &nbsp;馃弮 杩愬姩<br>馃摉 闃呰 &nbsp;馃挕 瀛︿範 &nbsp;馃 鍋ュ悍楗 &nbsp;鉁嶏笍 璁板綍</p>
+      <button class="btn-start" onclick="startP50()">鐜板湪寮€濮?/button>
     </div>`;
     document.getElementById('p50-content').innerHTML = html;
     document.getElementById('p50-footer').style.display = 'none';
@@ -659,7 +659,7 @@ function renderP50() {
   const currentChecked = Object.values(dd.habits).filter(Boolean).length;
   const isActive = viewIdx >= 0 && viewIdx < TOTAL_DAYS;
   const isFuture = viewIdx > idx;
-  const badgeTxt = streak >= 7 ? `🔥 连续${streak}天` : `第 ${Math.min(idx+1, TOTAL_DAYS)} / 50 天`;
+  const badgeTxt = streak >= 7 ? `馃敟 杩炵画${streak}澶ー : `绗?${Math.min(idx+1, TOTAL_DAYS)} / 50 澶ー;
 
   html += `<div class="p50-status">
     <div class="p50-header">
@@ -667,14 +667,14 @@ function renderP50() {
       <div class="p50-badge ${streak>=7?'fire':''}">${badgeTxt}</div>
     </div>
     <div class="p50-stats">
-      <div class="p50-stat"><div class="p50-stat-val" style="color:var(--accent)">${Math.min(idx+1,50)}</div><div class="p50-stat-label">进行天</div></div>
-      <div class="p50-stat"><div class="p50-stat-val" style="color:var(--green)">${fullDays}</div><div class="p50-stat-label">完美天</div></div>
-      <div class="p50-stat"><div class="p50-stat-val" style="color:var(--amber)">${streak}</div><div class="p50-stat-label">连续天</div></div>
-      <div class="p50-stat"><div class="p50-stat-val" style="color:var(--text2)">${Math.max(0,50-fullDays)}</div><div class="p50-stat-label">剩余天</div></div>
+      <div class="p50-stat"><div class="p50-stat-val" style="color:var(--accent)">${Math.min(idx+1,50)}</div><div class="p50-stat-label">杩涜澶?/div></div>
+      <div class="p50-stat"><div class="p50-stat-val" style="color:var(--green)">${fullDays}</div><div class="p50-stat-label">瀹岀編澶?/div></div>
+      <div class="p50-stat"><div class="p50-stat-val" style="color:var(--amber)">${streak}</div><div class="p50-stat-label">杩炵画澶?/div></div>
+      <div class="p50-stat"><div class="p50-stat-val" style="color:var(--text2)">${Math.max(0,50-fullDays)}</div><div class="p50-stat-label">鍓╀綑澶?/div></div>
     </div>
   </div>`;
 
-  html += `<div class="p50-grid-card"><div class="p50-grid-title">50天全览</div><div class="p50-grid">`;
+  html += `<div class="p50-grid-card"><div class="p50-grid-title">50澶╁叏瑙?/div><div class="p50-grid">`;
   for (let i = 0; i < TOTAL_DAYS; i++) {
     const ds = dateAtOffset(p50.startDate, i);
     const d = p50.days[ds];
@@ -693,7 +693,7 @@ function renderP50() {
   if (isActive) {
     html += `<div class="p50-today">
       <div class="p50-today-head">
-        <div class="p50-today-title">${viewIdx===idx?'今天':'第'+(viewIdx+1)+'天'} · ${formatDisplay(currentDate)}</div>
+        <div class="p50-today-title">${viewIdx===idx?'浠婂ぉ':'绗?+(viewIdx+1)+'澶?} 路 ${formatDisplay(currentDate)}</div>
         <div class="p50-today-score"><span>${currentChecked}</span> / 7</div>
       </div>`;
     HABITS.forEach(h => {
@@ -705,23 +705,23 @@ function renderP50() {
       </div>`;
     });
     html += `<div class="p50-note-wrap">
-      <div class="p50-note-label">今日备注 / 复盘</div>
-      <textarea class="p50-note-input" id="p50-note" placeholder="记录今天的感受、收获或遇到的挑战…" maxlength="500">${escHtml(dd.note||'')}</textarea>
-      <button class="btn-save-note" onclick="saveNote()">保存</button>
+      <div class="p50-note-label">浠婃棩澶囨敞 / 澶嶇洏</div>
+      <textarea class="p50-note-input" id="p50-note" placeholder="璁板綍浠婂ぉ鐨勬劅鍙椼€佹敹鑾锋垨閬囧埌鐨勬寫鎴樷€? maxlength="500">${escHtml(dd.note||'')}</textarea>
+      <button class="btn-save-note" onclick="saveNote()">淇濆瓨</button>
     </div></div>`;
   } else if (isFuture) {
-    html += `<div class="p50-today" style="text-align:center;padding:24px 14px;color:var(--text3);font-size:14px;">第 ${viewIdx+1} 天还没到，继续加油 💪</div>`;
+    html += `<div class="p50-today" style="text-align:center;padding:24px 14px;color:var(--text3);font-size:14px;">绗?${viewIdx+1} 澶╄繕娌″埌锛岀户缁姞娌?馃挭</div>`;
   } else {
-    html += `<div class="p50-today" style="text-align:center;padding:24px 14px;color:var(--text3);font-size:14px;">第 ${viewIdx+1} 天</div>`;
+    html += `<div class="p50-today" style="text-align:center;padding:24px 14px;color:var(--text3);font-size:14px;">绗?${viewIdx+1} 澶?/div>`;
   }
 
   document.getElementById('p50-content').innerHTML = html;
   const footer = document.getElementById('p50-footer');
   footer.style.display = 'block';
-  footer.innerHTML = '<button class="btn-reset" onclick="resetP50()">重置 Project 50</button>';
+  footer.innerHTML = '<button class="btn-reset" onclick="resetP50()">閲嶇疆 Project 50</button>';
 }
 
-/* ====== 短期目标 ====== */
+/* ====== 鐭湡鐩爣 ====== */
 function getGoals() { return load('goals', []); }
 function saveGoals(g) { save('goals', g); }
 
@@ -730,7 +730,7 @@ function createGoal() {
   const days = parseInt(document.getElementById('goalDaysInput').value);
   const unit = document.getElementById('goalUnitInput').value.trim();
   const target = parseFloat(document.getElementById('goalTargetInput').value);
-  if (!name || !days || days < 1) { alert('请填写目标名称和周期天数'); return; }
+  if (!name || !days || days < 1) { alert('璇峰～鍐欑洰鏍囧悕绉板拰鍛ㄦ湡澶╂暟'); return; }
   const goals = getGoals();
   goals.push({
     id: Date.now(),
@@ -752,8 +752,8 @@ function deleteGoal(id) {
     if (goals[i].id === id) { goal = goals[i]; break; }
   }
   if (!goal) return;
-  if (!confirm('确认删除目标"' + goal.name + '"？\n\n所有记录将清空，此操作不可恢复。')) return;
-  if (!confirm('再次确认：真的要删除吗？')) return;
+  if (!confirm('纭鍒犻櫎鐩爣"' + goal.name + '"锛焅n\n鎵€鏈夎褰曞皢娓呯┖锛屾鎿嶄綔涓嶅彲鎭㈠銆?)) return;
+  if (!confirm('鍐嶆纭锛氱湡鐨勮鍒犻櫎鍚楋紵')) return;
   goals = goals.filter(function(g) { return g.id !== id; });
   saveGoals(goals);
   renderGoals();
@@ -797,19 +797,19 @@ function renderGoals() {
   // Create form
   html += `<div class="goal-form">
     <div class="goal-form-row">
-      <input id="goalNameInput" placeholder="目标名称，如：减肥10kg" maxlength="30">
-      <input id="goalDaysInput" type="number" placeholder="周期(天)" min="1" style="max-width:80px;">
+      <input id="goalNameInput" placeholder="鐩爣鍚嶇О锛屽锛氬噺鑲?0kg" maxlength="30">
+      <input id="goalDaysInput" type="number" placeholder="鍛ㄦ湡(澶?" min="1" style="max-width:80px;">
     </div>
     <div class="goal-form-row">
-      <input id="goalTargetInput" type="number" placeholder="目标值（可选，如：10）" step="any" style="max-width:140px;">
-      <span class="goal-form-unit">单位</span>
-      <input id="goalUnitInput" placeholder="kg/页/本…" maxlength="8" style="max-width:80px;">
-      <button type="button" class="goal-form-btn" data-act="createGoal">创建目标</button>
+      <input id="goalTargetInput" type="number" placeholder="鐩爣鍊硷紙鍙€夛紝濡傦細10锛? step="any" style="max-width:140px;">
+      <span class="goal-form-unit">鍗曚綅</span>
+      <input id="goalUnitInput" placeholder="kg/椤?鏈€? maxlength="8" style="max-width:80px;">
+      <button type="button" class="goal-form-btn" data-act="createGoal">鍒涘缓鐩爣</button>
     </div>
   </div>`;
 
   if (!goals.length) {
-    html += '<div class="empty-hint">还没有短期目标，创建你的第一个目标吧<br>如：3个月减肥10kg、5天读完一本书</div>';
+    html += '<div class="empty-hint">杩樻病鏈夌煭鏈熺洰鏍囷紝鍒涘缓浣犵殑绗竴涓洰鏍囧惂<br>濡傦細3涓湀鍑忚偉10kg銆?澶╄瀹屼竴鏈功</div>';
     document.getElementById('goals-content').innerHTML = html;
     document.getElementById('goals-footer').style.display = 'none';
     return;
@@ -832,20 +832,20 @@ function renderGoals() {
     const color = colors[goals.indexOf(goal) % colors.length];
 
     html += `<div class="goal-swipe-wrap" data-gid="${goal.id}">
-      <div class="goal-swipe-bg"><button type="button" class="goal-swipe-del">删除</button></div>
+      <div class="goal-swipe-bg"><button type="button" class="goal-swipe-del">鍒犻櫎</button></div>
       <div class="goal-card" style="border-left:3px solid ${color}">
       <div class="goal-card-header">
-        <div class="goal-card-name">🎯 ${escHtml(goal.name)}</div>
+        <div class="goal-card-name">馃幆 ${escHtml(goal.name)}</div>
       </div>
       <div class="goal-card-meta">
-        <span>周期 ${totalDays}天</span>
-        <span>📅 ${goal.startDate} → ${dateAtOffset(goal.startDate, totalDays-1)}</span>
-        <span>✅ ${recordedDays}/${totalDays} 天记录</span>
-        ${goal.target != null ? `<span>🎯 目标 ${goal.target} ${escHtml(goal.unit)}</span>` : ''}
+        <span>鍛ㄦ湡 ${totalDays}澶?/span>
+        <span>馃搮 ${goal.startDate} 鈫?${dateAtOffset(goal.startDate, totalDays-1)}</span>
+        <span>鉁?${recordedDays}/${totalDays} 澶╄褰?/span>
+        ${goal.target != null ? `<span>馃幆 鐩爣 ${goal.target} ${escHtml(goal.unit)}</span>` : ''}
       </div>
       <div class="goal-progress-wrap">
         <div class="goal-progress-bar"><div class="goal-progress-fill" style="width:${pct}%;background:${color}"></div></div>
-        <div class="goal-progress-text"><span>时间进度 ${pct}%</span><span>${progress}/${totalDays} 天</span></div>
+        <div class="goal-progress-text"><span>鏃堕棿杩涘害 ${pct}%</span><span>${progress}/${totalDays} 澶?/span></div>
       </div>
 
       <!-- Day dots with values -->
@@ -858,7 +858,7 @@ function renderGoals() {
       if (rec && rec.val != null) cls += ' recorded';
       else if (i > idx) cls += ' future';
       const displayVal = (rec && rec.val != null) ? rec.val : '';
-      html += `<div class="${cls}" title="第${i+1}天 ${ds}${displayVal !== '' ? ' · '+displayVal+goal.unit : ''}">${displayVal}</div>`;
+      html += `<div class="${cls}" title="绗?{i+1}澶?${ds}${displayVal !== '' ? ' 路 '+displayVal+goal.unit : ''}">${displayVal}</div>`;
     }
     html += `</div>`;
 
@@ -866,11 +866,11 @@ function renderGoals() {
     if (isCurrentActive) {
       const rec = goal.records[currentDate];
       html += `<div class="goal-day-record">
-        <div class="goal-day-label">${viewIdx===idx?'今天':'第'+(viewIdx+1)+'天'} · ${formatDisplay(currentDate)} 记录</div>
+        <div class="goal-day-label">${viewIdx===idx?'浠婂ぉ':'绗?+(viewIdx+1)+'澶?} 路 ${formatDisplay(currentDate)} 璁板綍</div>
         <div class="goal-day-row">
-          <input class="goal-day-input" id="goalRecVal_${goal.id}" type="number" step="any" placeholder="${goal.unit ? '数值('+goal.unit+')' : '进度值（可选）'}" value="${rec&&rec.val!=null?rec.val:''}" style="max-width:140px;">
-          <input class="goal-day-input" id="goalRecNote_${goal.id}" placeholder="备注（可选）" maxlength="100" value="${rec?escHtml(rec.note||''):''}">
-          <button type="button" class="goal-day-save" data-act="saveGoalRecord" data-gid="${goal.id}">保存</button>
+          <input class="goal-day-input" id="goalRecVal_${goal.id}" type="number" step="any" placeholder="${goal.unit ? '鏁板€?'+goal.unit+')' : '杩涘害鍊硷紙鍙€夛級'}" value="${rec&&rec.val!=null?rec.val:''}" style="max-width:140px;">
+          <input class="goal-day-input" id="goalRecNote_${goal.id}" placeholder="澶囨敞锛堝彲閫夛級" maxlength="100" value="${rec?escHtml(rec.note||''):''}">
+          <button type="button" class="goal-day-save" data-act="saveGoalRecord" data-gid="${goal.id}">淇濆瓨</button>
         </div>
       </div>`;
     }
@@ -879,14 +879,14 @@ function renderGoals() {
     const records = Object.entries(goal.records).sort((a,b) => b[0].localeCompare(a[0]));
     if (records.length) {
       html += `<div class="goal-history">
-        <div class="goal-history-title" data-act="toggleGoalHistory">▸ 查看记录 (${records.length}条)</div>
+        <div class="goal-history-title" data-act="toggleGoalHistory">鈻?鏌ョ湅璁板綍 (${records.length}鏉?</div>
         <div class="goal-history-list">`;
       records.forEach(([ds, rec]) => {
         html += `<div class="goal-history-item">
           <span class="ghi-date">${ds}</span>
-          <span class="ghi-val">${rec.val != null ? rec.val + ' ' + escHtml(goal.unit) : '—'}</span>
+          <span class="ghi-val">${rec.val != null ? rec.val + ' ' + escHtml(goal.unit) : '鈥?}</span>
           <span class="ghi-note">${escHtml(rec.note||'')}</span>
-          <button type="button" class="goal-history-del" data-act="deleteGoalRecord" data-gid="${goal.id}" data-ds="${ds}">×</button>
+          <button type="button" class="goal-history-del" data-act="deleteGoalRecord" data-gid="${goal.id}" data-ds="${ds}">脳</button>
         </div>`;
       });
       html += `</div></div>`;
@@ -904,10 +904,10 @@ function toggleGoalHistory(el) {
   const list = el.nextElementSibling;
   const show = list.style.display === 'none' || !list.style.display;
   list.style.display = show ? 'block' : 'none';
-  el.textContent = (show ? '▾' : '▸') + el.textContent.slice(1);
+  el.textContent = (show ? '鈻? : '鈻?) + el.textContent.slice(1);
 }
 
-// ====== 左滑删除逻辑 ======
+// ====== 宸︽粦鍒犻櫎閫昏緫 ======
 var swipeState = { el: null, startX: 0, startY: 0, swiped: false, openEl: null };
 
 function closeAllSwipes() {
@@ -920,7 +920,7 @@ function closeAllSwipes() {
 document.getElementById('goals-content').addEventListener('click', function(e) {
   var el = e.target;
 
-  // 点击删除按钮
+  // 鐐瑰嚮鍒犻櫎鎸夐挳
   if (el.classList.contains('goal-swipe-del')) {
     e.preventDefault();
     var wrap = el.closest('.goal-swipe-wrap');
@@ -931,7 +931,7 @@ document.getElementById('goals-content').addEventListener('click', function(e) {
     return;
   }
 
-  // 事件委托：data-act 按钮
+  // 浜嬩欢濮旀墭锛歞ata-act 鎸夐挳
   while (el && el !== this) {
     var act = el.getAttribute('data-act');
     if (act) {
@@ -950,13 +950,12 @@ document.getElementById('goals-content').addEventListener('click', function(e) {
     el = el.parentElement;
   }
 
-  // 点击卡片外部关闭所有左滑
-  if (!e.target.closest('.goal-swipe-wrap')) {
+  // 鐐瑰嚮鍗＄墖澶栭儴鍏抽棴鎵€鏈夊乏婊?  if (!e.target.closest('.goal-swipe-wrap')) {
     closeAllSwipes();
   }
 });
 
-// 触摸滑动
+// 瑙︽懜婊戝姩
 document.getElementById('goals-content').addEventListener('touchstart', function(e) {
   var wrap = e.target.closest('.goal-swipe-wrap');
   if (!wrap) { closeAllSwipes(); return; }
@@ -972,20 +971,20 @@ document.getElementById('goals-content').addEventListener('touchmove', function(
   var dx = e.touches[0].clientX - swipeState.startX;
   var dy = e.touches[0].clientY - swipeState.startY;
 
-  // 判断水平滑动（忽略垂直滑动）
+  // 鍒ゆ柇姘村钩婊戝姩锛堝拷鐣ュ瀭鐩存粦鍔級
   if (Math.abs(dx) < 10 || Math.abs(dx) < Math.abs(dy)) return;
 
   e.preventDefault();
   swipeState.swiped = true;
 
   if (dx < -40) {
-    // 左滑 → 打开
+    // 宸︽粦 鈫?鎵撳紑
     closeAllSwipes();
     swipeState.el.classList.add('swiped');
     swipeState.openEl = swipeState.el.parentElement;
     swipeState.el = null;
   } else if (dx > 40) {
-    // 右滑 → 关闭
+    // 鍙虫粦 鈫?鍏抽棴
     swipeState.el.classList.remove('swiped');
     if (swipeState.openEl === swipeState.el.parentElement) swipeState.openEl = null;
     swipeState.el = null;
@@ -996,11 +995,11 @@ document.getElementById('goals-content').addEventListener('touchend', function()
   swipeState.el = null;
 });
 
-/* ====== Pomodoro (番茄钟) ====== */
+/* ====== Pomodoro (鐣寗閽? ====== */
 const POMO_MODES = {
-  work: { label: '专注', mins: 25, color: '#c83232' },
-  break: { label: '短休', mins: 5, color: '#3b8d5a' },
-  longBreak: { label: '长休', mins: 15, color: '#4f8ef7' }
+  work: { label: '涓撴敞', mins: 25, color: '#c83232' },
+  break: { label: '鐭紤', mins: 5, color: '#3b8d5a' },
+  longBreak: { label: '闀夸紤', mins: 15, color: '#4f8ef7' }
 };
 
 var pomo = {
@@ -1010,7 +1009,8 @@ var pomo = {
   timer: null,
   running: false,
   sound: true,
-  sessions: 0
+  sessions: 0,
+  endAt: 0 // timestamp when timer should end
 };
 
 function loadPomo() {
@@ -1044,7 +1044,7 @@ function renderPomo() {
   html += '<div class="pomo-mode-switch">';
   Object.keys(POMO_MODES).forEach(function(k) {
     var v = POMO_MODES[k];
-    html += '<button type="button" class="pomo-mode-btn' + (pomo.mode === k ? ' active' : '') + '" data-pomo="setMode" data-mode="' + k + '">' + v.label + ' ' + v.mins + '分</button>';
+    html += '<button type="button" class="pomo-mode-btn' + (pomo.mode === k ? ' active' : '') + '" data-pomo="setMode" data-mode="' + k + '">' + v.label + ' ' + v.mins + '鍒?/button>';
   });
   html += '</div>';
 
@@ -1060,52 +1060,58 @@ function renderPomo() {
 
   // Controls
   html += '<div class="pomo-controls">';
-  var btnLabel = pomo.running ? '暂停' : '开始';
+  var btnLabel = pomo.running ? '鏆傚仠' : '寮€濮?;
   var btnCls = pomo.running ? 'paused' : '';
   html += '<button type="button" class="pomo-btn pomo-btn-start ' + btnCls + '" data-pomo="toggle">' + btnLabel + '</button>';
-  html += '<button type="button" class="pomo-btn pomo-btn-reset" data-pomo="reset">重置</button>';
+  html += '<button type="button" class="pomo-btn pomo-btn-reset" data-pomo="reset">閲嶇疆</button>';
   html += '</div>';
 
   // Stats
   html += '<div class="pomo-stats">';
-  html += '<div class="pomo-stat-card"><div class="pomo-stat-val" style="color:#c83232">' + pomo.sessions + '</div><div class="pomo-stat-lbl">今日番茄</div></div>';
-  html += '<div class="pomo-stat-card"><div class="pomo-stat-val" style="color:#3b8d5a">' + (pomo.sessions * 25) + '</div><div class="pomo-stat-lbl">专注分钟</div></div>';
-  html += '<div class="pomo-stat-card"><div class="pomo-stat-val" style="color:#4f8ef7">' + Math.floor(pomo.sessions / 4) + '</div><div class="pomo-stat-lbl">长休次数</div></div>';
+  html += '<div class="pomo-stat-card"><div class="pomo-stat-val" style="color:#c83232">' + pomo.sessions + '</div><div class="pomo-stat-lbl">浠婃棩鐣寗</div></div>';
+  html += '<div class="pomo-stat-card"><div class="pomo-stat-val" style="color:#3b8d5a">' + (pomo.sessions * 25) + '</div><div class="pomo-stat-lbl">涓撴敞鍒嗛挓</div></div>';
+  html += '<div class="pomo-stat-card"><div class="pomo-stat-val" style="color:#4f8ef7">' + Math.floor(pomo.sessions / 4) + '</div><div class="pomo-stat-lbl">闀夸紤娆℃暟</div></div>';
   html += '</div>';
 
   // Sound toggle
   html += '<div class="pomo-sound-toggle" data-pomo="toggleSound">';
-  html += pomo.sound ? '🔔 提示音 开' : '🔕 提示音 关';
+  html += pomo.sound ? '馃敂 鎻愮ず闊?寮€' : '馃敃 鎻愮ず闊?鍏?;
   html += '</div>';
 
   html += '</div>'; // pomo-main
 
   // History placeholder
-  html += '<div class="pomo-history"><div class="pomo-history-title" data-act="togglePomoHistory">▸ 使用说明</div><div class="pomo-history-list">';
-  html += '<div class="pomo-history-item"><span class="phi-type">🍅 专注</span><span class="phi-time">25分钟集中工作</span></div>';
-  html += '<div class="pomo-history-item"><span class="phi-type">☕ 短休</span><span class="phi-time">5分钟休息放松</span></div>';
-  html += '<div class="pomo-history-item"><span class="phi-type">🌴 长休</span><span class="phi-time">每4个番茄后15分钟长休</span></div>';
+  html += '<div class="pomo-history"><div class="pomo-history-title" data-act="togglePomoHistory">鈻?浣跨敤璇存槑</div><div class="pomo-history-list">';
+  html += '<div class="pomo-history-item"><span class="phi-type">馃崊 涓撴敞</span><span class="phi-time">25鍒嗛挓闆嗕腑宸ヤ綔</span></div>';
+  html += '<div class="pomo-history-item"><span class="phi-type">鈽?鐭紤</span><span class="phi-time">5鍒嗛挓浼戞伅鏀炬澗</span></div>';
+  html += '<div class="pomo-history-item"><span class="phi-type">馃尨 闀夸紤</span><span class="phi-time">姣?涓暘鑼勫悗15鍒嗛挓闀夸紤</span></div>';
   html += '</div></div>';
 
   document.getElementById('pomo-content').innerHTML = html;
 }
 
 function pomoTick() {
-  if (pomo.remaining <= 0) {
+  var now = Date.now();
+  var left = Math.max(0, Math.ceil((pomo.endAt - now) / 1000));
+  if (left <= 0) {
     stopPomo();
     pomo.sessions++;
+    pomo.remaining = 0;
     savePomoState();
     if (pomo.sound) playBeep();
     renderPomo();
     return;
   }
-  pomo.remaining--;
+  pomo.remaining = left;
   renderPomo();
 }
 
 function startPomo() {
   pomo.running = true;
-  pomo.timer = setInterval(pomoTick, 1000);
+  // Set end time based on remaining seconds
+  pomo.endAt = Date.now() + pomo.remaining * 1000;
+  if (pomo.timer) clearInterval(pomo.timer);
+  pomo.timer = setInterval(pomoTick, 500); // faster tick for smoother recovery
   renderPomo();
 }
 
@@ -1120,8 +1126,24 @@ function resetPomoTimer() {
   var m = POMO_MODES[pomo.mode];
   pomo.remaining = m.mins * 60;
   pomo.total = m.mins * 60;
+  pomo.endAt = 0;
   renderPomo();
 }
+
+// Recover timer on visibility change (screen wake)
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden && pomo.running) {
+    var now = Date.now();
+    var left = Math.max(0, Math.ceil((pomo.endAt - now) / 1000));
+    if (left <= 0) {
+      pomo.remaining = 0;
+      pomoTick(); // will trigger completion
+    } else {
+      pomo.remaining = left;
+      renderPomo();
+    }
+  }
+});
 
 function setPomoMode(mode) {
   if (pomo.running) stopPomo();
@@ -1183,7 +1205,7 @@ document.getElementById('pomo-content').addEventListener('click', function(e) {
       var list = el.nextElementSibling;
       var show = list.style.display === 'none' || !list.style.display;
       list.style.display = show ? 'block' : 'none';
-      el.textContent = (show ? '▾' : '▸') + el.textContent.slice(1);
+      el.textContent = (show ? '鈻? : '鈻?) + el.textContent.slice(1);
       return;
     }
     el = el.parentElement;
@@ -1193,12 +1215,12 @@ document.getElementById('pomo-content').addEventListener('click', function(e) {
 loadPomo();
 renderPomo();
 
-/* ====== Expense (日常花费) ====== */
+/* ====== Expense (鏃ュ父鑺辫垂) ====== */
 const PAY_METHODS = [
-  { id: 'alipay',   icon: '💙', label: '支付宝', color: '#1677ff', bg: '#e6f4ff' },
-  { id: 'wechat',   icon: '💚', label: '微信',   color: '#07c160', bg: '#e6f9f0' },
-  { id: 'bank',     icon: '🏦', label: '银行卡', color: '#c83232', bg: '#fdecea' },
-  { id: 'other',    icon: '💰', label: '其他',   color: '#c55a00', bg: '#fef3e0' },
+  { id: 'alipay',   icon: '馃挋', label: '鏀粯瀹?, color: '#1677ff', bg: '#e6f4ff' },
+  { id: 'wechat',   icon: '馃挌', label: '寰俊',   color: '#07c160', bg: '#e6f9f0' },
+  { id: 'bank',     icon: '馃彟', label: '閾惰鍗?, color: '#c83232', bg: '#fdecea' },
+  { id: 'other',    icon: '馃挵', label: '鍏朵粬',   color: '#c55a00', bg: '#fef3e0' },
 ];
 
 function getExpenses() {
@@ -1251,23 +1273,23 @@ function renderExpense() {
   // Add row - two lines for mobile
   html += '<div class="expense-add-wrap">';
   html += '<div class="expense-add-row">';
-  html += '<input type="number" class="expense-amt-input" id="expenseAmt" placeholder="金额" step="0.01" min="0">';
+  html += '<input type="number" class="expense-amt-input" id="expenseAmt" placeholder="閲戦" step="0.01" min="0">';
   html += '<select class="expense-method-select" id="expenseMethod">';
   PAY_METHODS.forEach(function(m) {
     html += '<option value="' + m.id + '">' + m.icon + ' ' + m.label + '</option>';
   });
   html += '</select>';
-  html += '<button type="button" class="expense-add-btn" data-act="addExpense">添加</button>';
+  html += '<button type="button" class="expense-add-btn" data-act="addExpense">娣诲姞</button>';
   html += '</div>';
   html += '<div class="expense-add-row expense-add-row-2">';
-  html += '<input type="text" class="expense-note-input" id="expenseNote" placeholder="用途备注（可选）" maxlength="30">';
+  html += '<input type="text" class="expense-note-input" id="expenseNote" placeholder="鐢ㄩ€斿娉紙鍙€夛級" maxlength="30">';
   html += '</div>';
   html += '</div>';
 
   // Total
   html += '<div class="expense-total-card">';
-  html += '<span class="expense-total-label">📅 ' + formatDisplay(currentDate) + ' 支出合计</span>';
-  html += '<span class="expense-total-amount">¥' + total.toFixed(2) + '</span>';
+  html += '<span class="expense-total-label">馃搮 ' + formatDisplay(currentDate) + ' 鏀嚭鍚堣</span>';
+  html += '<span class="expense-total-amount">楼' + total.toFixed(2) + '</span>';
   html += '</div>';
 
   // Method breakdown
@@ -1276,7 +1298,7 @@ function renderExpense() {
     PAY_METHODS.forEach(function(m) {
       html += '<div class="expense-method-card" style="background:' + m.bg + '">';
       html += '<div class="expense-method-icon">' + m.icon + '</div>';
-      html += '<div class="expense-method-amt" style="color:' + m.color + '">¥' + methodTotals[m.id].toFixed(2) + '</div>';
+      html += '<div class="expense-method-amt" style="color:' + m.color + '">楼' + methodTotals[m.id].toFixed(2) + '</div>';
       html += '<div class="expense-method-label">' + m.label + '</div>';
       html += '</div>';
     });
@@ -1285,7 +1307,7 @@ function renderExpense() {
 
   // List
   if (items.length === 0) {
-    html += '<div class="expense-empty">今天还没有支出记录<br>添加你的第一笔花费吧</div>';
+    html += '<div class="expense-empty">浠婂ぉ杩樻病鏈夋敮鍑鸿褰?br>娣诲姞浣犵殑绗竴绗旇姳璐瑰惂</div>';
   } else {
     html += '<div class="expense-list">';
     items.sort(function(a,b) { return b.id - a.id; }).forEach(function(e) {
@@ -1293,11 +1315,11 @@ function renderExpense() {
       html += '<div class="expense-item">';
       html += '<div class="expense-item-left">';
       html += '<span class="expense-item-method" style="color:' + m.color + ';background:' + m.bg + '">' + m.icon + ' ' + m.label + '</span>';
-      html += '<span class="expense-item-note">' + (e.note || '无备注') + '</span>';
+      html += '<span class="expense-item-note">' + (e.note || '鏃犲娉?) + '</span>';
       html += '</div>';
       html += '<div style="display:flex;align-items:center;gap:8px;">';
-      html += '<span class="expense-item-amt">¥' + e.amt.toFixed(2) + '</span>';
-      html += '<button type="button" class="expense-item-del" data-act="deleteExpense" data-eid="' + e.id + '">×</button>';
+      html += '<span class="expense-item-amt">楼' + e.amt.toFixed(2) + '</span>';
+      html += '<button type="button" class="expense-item-del" data-act="deleteExpense" data-eid="' + e.id + '">脳</button>';
       html += '</div>';
       html += '</div>';
     });
@@ -1342,7 +1364,7 @@ function renderAll() {
 
 renderAll();
 
-// ====== Service Worker (离线缓存) ======
+// ====== Service Worker (绂荤嚎缂撳瓨) ======
 if ('serviceWorker' in navigator) {
   var swCode = 'self.addEventListener("install",function(e){e.waitUntil(self.skipWaiting())});self.addEventListener("activate",function(e){e.waitUntil(self.clients.claim())});self.addEventListener("fetch",function(e){e.respondWith(fetch(e.request).catch(function(){return caches.match(e.request)}))});';
   var swBlob = new Blob([swCode], {type: 'application/javascript'});
