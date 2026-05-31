@@ -297,6 +297,37 @@ html, body { -webkit-overflow-scrolling: touch; }
 .expense-item-amt { font-size: 15px; font-weight: 500; color: var(--red); }
 .expense-item-del { width: 24px; height: 24px; border: none; background: none; color: var(--text3); font-size: 14px; cursor: pointer; border-radius: 4px; flex-shrink: 0; }
 .expense-empty { text-align: center; padding: 40px 16px; color: var(--text3); font-size: 14px; }
+/* Expense view tabs */
+.expense-view-tabs { display: flex; gap: 0; background: var(--bg); border: 0.5px solid var(--border-em); border-radius: var(--radius); overflow: hidden; margin-bottom: 12px; }
+.expense-view-tab { flex: 1; height: 38px; border: none; background: none; font-size: 13px; color: var(--text2); cursor: pointer; font-weight: 400; }
+.expense-view-tab.active { background: var(--card); color: var(--accent); font-weight: 600; }
+/* Monthly summary */
+.expense-month-nav { display: flex; align-items: center; justify-content: space-between; background: var(--card); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 10px 14px; margin-bottom: 10px; }
+.expense-month-title { font-size: 15px; font-weight: 500; }
+.expense-month-total { font-size: 18px; font-weight: 600; color: var(--red); }
+.expense-month-arrow { background: none; border: 0.5px solid var(--border-em); border-radius: 6px; padding: 4px 10px; font-size: 14px; cursor: pointer; color: var(--text1); }
+.expense-day-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 0.5px solid var(--border); cursor: pointer; }
+.expense-day-row:last-child { border-bottom: none; }
+.expense-day-row:active { background: var(--bg); }
+.expense-day-label { font-size: 14px; color: var(--text1); }
+.expense-day-right { display: flex; align-items: center; gap: 8px; }
+.expense-day-amt { font-size: 15px; font-weight: 500; color: var(--red); }
+.expense-day-arrow { font-size: 12px; color: var(--text3); }
+.expense-day-detail { display: none; padding: 8px 14px 12px; background: var(--bg); border-bottom: 0.5px solid var(--border); }
+.expense-day-detail.open { display: block; }
+/* Year summary */
+.expense-year-nav { display: flex; align-items: center; justify-content: space-between; background: var(--card); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 10px 14px; margin-bottom: 10px; }
+.expense-year-title { font-size: 15px; font-weight: 500; }
+.expense-year-total { font-size: 18px; font-weight: 600; color: var(--red); }
+.expense-year-arrow { background: none; border: 0.5px solid var(--border-em); border-radius: 6px; padding: 4px 10px; font-size: 14px; cursor: pointer; color: var(--text1); }
+.expense-month-bars { background: var(--card); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 10px; }
+.expense-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.expense-bar-row:last-child { margin-bottom: 0; }
+.expense-bar-month { font-size: 12px; color: var(--text2); width: 28px; flex-shrink: 0; text-align: right; }
+.expense-bar-track { flex: 1; height: 14px; background: var(--bg); border-radius: 7px; overflow: hidden; }
+.expense-bar-fill { height: 100%; background: var(--red); border-radius: 7px; transition: width 0.3s; }
+.expense-bar-val { font-size: 12px; color: var(--text2); width: 60px; flex-shrink: 0; text-align: right; }
+.expense-year-method { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; }
 </style>
 </head>
 <body>
@@ -1224,6 +1255,10 @@ const PAY_METHODS = [
   { id: 'other',    icon: '💰', label: '其他',   color: '#c55a00', bg: '#fef3e0' },
 ];
 
+var expenseView = 'day'; // 'day' | 'month' | 'year'
+var expenseMonthNav = ''; // 'YYYY-MM'
+var expenseYearNav = 0;   // number
+
 function getExpenses() {
   try { return JSON.parse(localStorage.getItem('expenses') || '{}'); } catch(e) { return {}; }
 }
@@ -1260,7 +1295,17 @@ function deleteExpense(expenseId) {
   renderExpense();
 }
 
-function renderExpense() {
+function renderExpenseViewTabs() {
+  var labels = [['day','今日'], ['month','月统计'], ['year','年统计']];
+  var html = '<div class="expense-view-tabs">';
+  labels.forEach(function(pair) {
+    html += '<button type="button" class="expense-view-tab' + (expenseView === pair[0] ? ' active' : '') + '" data-expview="' + pair[0] + '">' + pair[1] + '</button>';
+  });
+  html += '</div>';
+  return html;
+}
+
+function renderExpenseDay() {
   var items = getDayExpenses(currentDate);
   var total = 0;
   var methodTotals = { alipay: 0, wechat: 0, bank: 0, other: 0 };
@@ -1269,9 +1314,9 @@ function renderExpense() {
     methodTotals[e.method] = (methodTotals[e.method] || 0) + e.amt;
   });
 
-  var html = '';
+  var html = renderExpenseViewTabs();
 
-  // Add row - two lines for mobile
+  // Add row
   html += '<div class="expense-add-wrap">';
   html += '<div class="expense-add-row">';
   html += '<input type="number" class="expense-amt-input" id="expenseAmt" placeholder="金额" step="0.01" min="0">';
@@ -1327,6 +1372,165 @@ function renderExpense() {
     html += '</div>';
   }
 
+  return html;
+}
+
+function renderExpenseMonth() {
+  var all = getExpenses();
+  // parse nav month
+  var parts = expenseMonthNav.split('-');
+  var navYear = parseInt(parts[0]);
+  var navMonth = parseInt(parts[1]); // 1-12
+
+  var monthLabel = navYear + '年' + navMonth + '月';
+  var daysInMonth = new Date(navYear, navMonth, 0).getDate();
+
+  // Compute per-day totals and month total
+  var monthTotal = 0;
+  var methodTotals = { alipay: 0, wechat: 0, bank: 0, other: 0 };
+  var dayData = []; // { dateStr, total, items }
+  for (var d = 1; d <= daysInMonth; d++) {
+    var ds = navYear + '-' + String(navMonth).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+    var items = all[ds] || [];
+    var dayTotal = 0;
+    items.forEach(function(e) {
+      dayTotal += e.amt;
+      monthTotal += e.amt;
+      methodTotals[e.method] = (methodTotals[e.method] || 0) + e.amt;
+    });
+    if (items.length > 0) dayData.push({ dateStr: ds, total: dayTotal, items: items });
+  }
+
+  var html = renderExpenseViewTabs();
+
+  // Month nav
+  html += '<div class="expense-month-nav">';
+  html += '<button type="button" class="expense-month-arrow" data-expmonth="prev">‹</button>';
+  html += '<div><div class="expense-month-title">📅 ' + monthLabel + '</div><div style="font-size:12px;color:var(--text3)">共 ' + dayData.length + ' 天有支出</div></div>';
+  html += '<div>';
+  html += '<div class="expense-month-total">¥' + monthTotal.toFixed(2) + '</div>';
+  html += '</div>';
+  html += '<button type="button" class="expense-month-arrow" data-expmonth="next">›</button>';
+  html += '</div>';
+
+  // Method breakdown
+  if (monthTotal > 0) {
+    html += '<div class="expense-method-breakdown">';
+    PAY_METHODS.forEach(function(m) {
+      html += '<div class="expense-method-card" style="background:' + m.bg + '">';
+      html += '<div class="expense-method-icon">' + m.icon + '</div>';
+      html += '<div class="expense-method-amt" style="color:' + m.color + '">¥' + (methodTotals[m.id]||0).toFixed(2) + '</div>';
+      html += '<div class="expense-method-label">' + m.label + '</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+
+  // Per-day list (collapsible)
+  if (dayData.length === 0) {
+    html += '<div class="expense-empty">本月暂无支出记录</div>';
+  } else {
+    html += '<div class="expense-list">';
+    dayData.sort(function(a,b) { return b.dateStr.localeCompare(a.dateStr); }).forEach(function(day) {
+      var d = new Date(day.dateStr + 'T00:00:00');
+      var WEEK = ['日','一','二','三','四','五','六'];
+      var label = (d.getMonth()+1) + '月' + d.getDate() + '日 周' + WEEK[d.getDay()];
+      html += '<div class="expense-day-row" data-dayds="' + day.dateStr + '">';
+      html += '<span class="expense-day-label">' + label + '</span>';
+      html += '<div class="expense-day-right"><span class="expense-day-amt">¥' + day.total.toFixed(2) + '</span><span class="expense-day-arrow">›</span></div>';
+      html += '</div>';
+      html += '<div class="expense-day-detail" id="daydetail-' + day.dateStr + '">';
+      day.items.sort(function(a,b){return b.id-a.id;}).forEach(function(e) {
+        var pm = PAY_METHODS.find(function(x){return x.id===e.method;})||PAY_METHODS[3];
+        html += '<div class="expense-item" style="background:var(--card);border-radius:8px;margin-bottom:4px;">';
+        html += '<div class="expense-item-left"><span class="expense-item-method" style="color:'+pm.color+';background:'+pm.bg+'">'+pm.icon+' '+pm.label+'</span>';
+        html += '<span class="expense-item-note">'+(e.note||'无备注')+'</span></div>';
+        html += '<span class="expense-item-amt">¥'+e.amt.toFixed(2)+'</span>';
+        html += '</div>';
+      });
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+
+  return html;
+}
+
+function renderExpenseYear() {
+  var all = getExpenses();
+  var navYear = expenseYearNav;
+
+  var yearTotal = 0;
+  var methodTotals = { alipay: 0, wechat: 0, bank: 0, other: 0 };
+  var monthTotals = [0,0,0,0,0,0,0,0,0,0,0,0]; // index 0=Jan
+
+  Object.keys(all).forEach(function(ds) {
+    var y = parseInt(ds.split('-')[0]);
+    var mo = parseInt(ds.split('-')[1]) - 1; // 0-based
+    if (y !== navYear) return;
+    all[ds].forEach(function(e) {
+      monthTotals[mo] += e.amt;
+      yearTotal += e.amt;
+      methodTotals[e.method] = (methodTotals[e.method]||0) + e.amt;
+    });
+  });
+
+  var maxMonthAmt = Math.max.apply(null, monthTotals) || 1;
+
+  var html = renderExpenseViewTabs();
+
+  // Year nav
+  html += '<div class="expense-year-nav">';
+  html += '<button type="button" class="expense-year-arrow" data-expyear="prev">‹</button>';
+  html += '<div><div class="expense-year-title">📊 ' + navYear + '年度支出</div></div>';
+  html += '<div class="expense-year-total">¥' + yearTotal.toFixed(2) + '</div>';
+  html += '<button type="button" class="expense-year-arrow" data-expyear="next">›</button>';
+  html += '</div>';
+
+  // Bar chart by month
+  html += '<div class="expense-month-bars">';
+  var MONTH_LABELS = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+  monthTotals.forEach(function(amt, i) {
+    var pct = (amt / maxMonthAmt * 100).toFixed(1);
+    html += '<div class="expense-bar-row">';
+    html += '<div class="expense-bar-month">' + MONTH_LABELS[i] + '</div>';
+    html += '<div class="expense-bar-track"><div class="expense-bar-fill" style="width:' + (amt>0?Math.max(pct,2):0) + '%"></div></div>';
+    html += '<div class="expense-bar-val">' + (amt>0 ? '¥'+amt.toFixed(0) : '—') + '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+
+  // Method breakdown for the year
+  if (yearTotal > 0) {
+    html += '<div class="expense-method-breakdown">';
+    PAY_METHODS.forEach(function(m) {
+      html += '<div class="expense-method-card" style="background:' + m.bg + '">';
+      html += '<div class="expense-method-icon">' + m.icon + '</div>';
+      html += '<div class="expense-method-amt" style="color:' + m.color + '">¥' + (methodTotals[m.id]||0).toFixed(2) + '</div>';
+      html += '<div class="expense-method-label">' + m.label + '</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  } else {
+    html += '<div class="expense-empty">本年暂无支出记录</div>';
+  }
+
+  return html;
+}
+
+function renderExpense() {
+  // Init nav state if empty
+  if (!expenseMonthNav) {
+    var t = new Date();
+    expenseMonthNav = t.getFullYear() + '-' + String(t.getMonth()+1).padStart(2,'0');
+  }
+  if (!expenseYearNav) expenseYearNav = new Date().getFullYear();
+
+  var html = '';
+  if (expenseView === 'day') html = renderExpenseDay();
+  else if (expenseView === 'month') html = renderExpenseMonth();
+  else html = renderExpenseYear();
+
   document.getElementById('expense-content').innerHTML = html;
 }
 
@@ -1334,6 +1538,37 @@ function renderExpense() {
 document.getElementById('expense-content').addEventListener('click', function(e) {
   var el = e.target;
   while (el && el !== this) {
+    // View tab switch
+    var expview = el.getAttribute('data-expview');
+    if (expview) { expenseView = expview; renderExpense(); return; }
+
+    // Month nav
+    var expmonth = el.getAttribute('data-expmonth');
+    if (expmonth) {
+      var parts = expenseMonthNav.split('-');
+      var y = parseInt(parts[0]), m = parseInt(parts[1]);
+      if (expmonth === 'prev') { m--; if (m < 1) { m = 12; y--; } }
+      else { m++; if (m > 12) { m = 1; y++; } }
+      expenseMonthNav = y + '-' + String(m).padStart(2,'0');
+      renderExpense(); return;
+    }
+
+    // Year nav
+    var expyear = el.getAttribute('data-expyear');
+    if (expyear) {
+      expenseYearNav += (expyear === 'prev' ? -1 : 1);
+      renderExpense(); return;
+    }
+
+    // Day detail toggle
+    var dayds = el.getAttribute('data-dayds') || (el.closest ? el.closest('[data-dayds]') : null);
+    if (!dayds && el.closest) { var p = el.closest('[data-dayds]'); if (p) dayds = p.getAttribute('data-dayds'); }
+    if (dayds) {
+      var det = document.getElementById('daydetail-' + dayds);
+      if (det) { det.classList.toggle('open'); }
+      return;
+    }
+
     var act = el.getAttribute('data-act');
     if (act) {
       e.preventDefault();
