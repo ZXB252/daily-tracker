@@ -1193,19 +1193,101 @@ function togglePomoSound() {
   renderPomo();
 }
 
-function playBeep() {
+function playAlarm() {
+  // 1. 震动（Android + 部分iOS PWA）
+  if (navigator.vibrate) {
+    navigator.vibrate([300, 100, 300, 100, 500]);
+  }
+
+  // 2. 音频：三声递进闹铃，每声包含两个音符，音量更大
   try {
     var ctx = new (window.AudioContext || window.webkitAudioContext)();
-    var o = ctx.createOscillator();
-    var g = ctx.createGain();
-    o.connect(g); g.connect(ctx.destination);
-    o.frequency.value = 880;
-    o.type = 'sine';
-    g.gain.value = 0.3;
-    o.start();
-    setTimeout(function() { o.stop(); ctx.close(); }, 300);
-  } catch(e) {}
+
+    // iOS 需要在用户交互后 resume
+    if (ctx.state === 'suspended') {
+      ctx.resume();
+    }
+
+    var masterGain = ctx.createGain();
+    masterGain.gain.value = 1.0;
+    masterGain.connect(ctx.destination);
+
+    // 播放一组"叮咚"音节序列
+    var notes = [
+      // [startTime, freq, duration, type]
+      [0.0,  1047, 0.15, 'sine'],   // C6
+      [0.15, 1319, 0.25, 'sine'],   // E6
+      [0.5,  1047, 0.15, 'sine'],
+      [0.65, 1319, 0.25, 'sine'],
+      [1.0,  1047, 0.15, 'sine'],
+      [1.15, 1319, 0.40, 'sine'],
+    ];
+
+    notes.forEach(function(n) {
+      var startT = n[0], freq = n[1], dur = n[2], type = n[3];
+      var osc = ctx.createOscillator();
+      var env = ctx.createGain();
+      osc.connect(env);
+      env.connect(masterGain);
+
+      osc.type = type;
+      osc.frequency.value = freq;
+
+      var now = ctx.currentTime;
+      env.gain.setValueAtTime(0, now + startT);
+      env.gain.linearRampToValueAtTime(0.8, now + startT + 0.02);
+      env.gain.exponentialRampToValueAtTime(0.001, now + startT + dur);
+
+      osc.start(now + startT);
+      osc.stop(now + startT + dur + 0.05);
+    });
+
+    // 3. 关闭 ctx
+    setTimeout(function() {
+      try { ctx.close(); } catch(e) {}
+    }, 2500);
+
+  } catch(e) {
+    console.warn('playAlarm failed:', e);
+  }
+
+  // 4. 屏幕闪烁提示（视觉反馈）
+  var body = document.body;
+  var origBg = body.style.background;
+  var flashCount = 0;
+  var flashInterval = setInterval(function() {
+    body.style.background = (flashCount % 2 === 0) ? '#ff4757' : '';
+    flashCount++;
+    if (flashCount >= 6) {
+      clearInterval(flashInterval);
+      body.style.background = origBg;
+    }
+  }, 200);
 }
+
+// 兼容旧调用名
+function playBeep() { playAlarm(); }
+
+// 解锁 AudioContext：在首次用户交互时预热
+(function unlockAudio() {
+  var unlocked = false;
+  var events = ['touchstart', 'touchend', 'click'];
+  function unlock() {
+    if (unlocked) return;
+    unlocked = true;
+    try {
+      var ctx = new (window.AudioContext || window.webkitAudioContext)();
+      var buf = ctx.createBuffer(1, 1, 22050);
+      var src = ctx.createBufferSource();
+      src.buffer = buf;
+      src.connect(ctx.destination);
+      src.start(0);
+      setTimeout(function() { try { ctx.close(); } catch(e) {} }, 100);
+    } catch(e) {}
+    events.forEach(function(ev) { document.removeEventListener(ev, unlock, true); });
+  }
+  events.forEach(function(ev) { document.addEventListener(ev, unlock, true); });
+}());
 
 // Pomo event delegation
 document.getElementById('pomo-content').addEventListener('click', function(e) {
