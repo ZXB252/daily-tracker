@@ -1105,9 +1105,10 @@ function renderPomo() {
   html += '<div class="pomo-stat-card"><div class="pomo-stat-val" style="color:#4f8ef7">' + Math.floor(pomo.sessions / 4) + '</div><div class="pomo-stat-lbl">长休次数</div></div>';
   html += '</div>';
 
-  // Sound toggle
-  html += '<div class="pomo-sound-toggle" data-pomo="toggleSound">';
-  html += pomo.sound ? '🔔 提示音 开' : '🔕 提示音 关';
+  // Sound toggle + test button
+  html += '<div class="pomo-sound-toggle" style="gap:12px;">';
+  html += '<span data-pomo="toggleSound" style="cursor:pointer;">' + (pomo.sound ? '🔔 提示音 开' : '🔕 提示音 关') + '</span>';
+  html += '<span data-pomo="testSound" style="cursor:pointer;color:var(--accent);">▶ 试听</span>';
   html += '</div>';
 
   html += '</div>'; // pomo-main
@@ -1286,6 +1287,10 @@ document.getElementById('pomo-content').addEventListener('click', function(e) {
           break;
         case 'toggleSound':
           togglePomoSound();
+          break;
+        case 'testSound':
+          _ensureAlarmCtx(); // 用户手势中激活 AudioContext
+          playAlarm();
           break;
       }
       return;
