@@ -268,8 +268,6 @@ html, body { -webkit-overflow-scrolling: touch; }
 .pomo-history-item .phi-type { color: var(--accent); font-weight: 500; }
 .pomo-history-item .phi-time { color: var(--text2); }
 .pomo-sound-toggle { display: flex; align-items: center; gap: 6px; justify-content: center; margin-top: 12px; font-size: 12px; color: var(--text3); cursor: pointer; }
-.pomo-sound-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 12px; }
-.pomo-test-btn { background: none; border: 0.5px solid var(--border-em); border-radius: 14px; padding: 4px 12px; font-size: 12px; color: var(--accent); cursor: pointer; white-space: nowrap; }
 
 /* ====== Expense (日常花费) ====== */
 .expense-add-wrap { background: var(--card); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 12px; }
@@ -1107,14 +1105,9 @@ function renderPomo() {
   html += '<div class="pomo-stat-card"><div class="pomo-stat-val" style="color:#4f8ef7">' + Math.floor(pomo.sessions / 4) + '</div><div class="pomo-stat-lbl">长休次数</div></div>';
   html += '</div>';
 
-  // Sound toggle + test button
-  html += '<div class="pomo-sound-row">';
+  // Sound toggle
   html += '<div class="pomo-sound-toggle" data-pomo="toggleSound">';
   html += pomo.sound ? '🔔 提示音 开' : '🔕 提示音 关';
-  html += '</div>';
-  if (pomo.sound) {
-    html += '<button type="button" class="pomo-test-btn" data-pomo="testSound">🔊 试听</button>';
-  }
   html += '</div>';
 
   html += '</div>'; // pomo-main
@@ -1267,9 +1260,6 @@ document.getElementById('pomo-content').addEventListener('click', function(e) {
           break;
         case 'toggleSound':
           togglePomoSound();
-          break;
-        case 'testSound':
-          playAlarm();
           break;
       }
       return;
