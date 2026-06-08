@@ -1147,16 +1147,13 @@ function pomoTick() {
   var now = Date.now();
   var left = Math.max(0, Math.ceil((pomo.endAt - now) / 1000));
   if (left <= 0) {
-    // 先播音/通知，再 stopPomo（否则 stopPomo 内的 _cancelScheduledAlarm 会取消预调度音符）
-    if (pomo.sound) {
-      try { playAlarm(); } catch(e) {}          // 前台音频
-      try { sendPomoNotification(); } catch(e) {}  // 系统通知
-    }
     stopPomo();
     pomo.sessions++;
     pomo.totalSessions++;
     pomo.remaining = 0;
     savePomoState();
+    // 声音已由 scheduleAlarmAt 预调度，这里作 fallback（屏幕暗时无音频 fallback）
+    // if (pomo.sound) playBeep();
     renderPomo();
     return;
   }
@@ -1166,12 +1163,14 @@ function pomoTick() {
 
 function startPomo() {
   pomo.running = true;
+  // Set end time based on remaining seconds
   pomo.endAt = Date.now() + pomo.remaining * 1000;
   if (pomo.timer) clearInterval(pomo.timer);
   pomo.timer = setInterval(pomoTick, 500);
+  // 在用户手势中创建 AudioContext 并预调度闹铃到 endAt 时刻
   if (pomo.sound) {
-    _getActx(); // 用户手势中创建/恢复 AudioContext
-    requestNotifyPermission(); // 用户手势中请求通知权限
+    _getActx(); // 确保在用户手势中创建 AudioContext
+    scheduleAlarmAt(pomo.endAt);
   }
   renderPomo();
 }
@@ -1309,14 +1308,13 @@ function _cancelScheduledAlarm() {
 
 // 立即播放（试听 / 兼容旧调用）
 function playAlarm() {
-  try {
-    var ctx = _getActx();
-    if (!ctx) return;
-    if (ctx.state === 'suspended') ctx.resume();
+  var ctx = _getActx();
+  if (!ctx) return;
+  if (ctx.state === 'suspended') ctx.resume();
 
-    if (navigator.vibrate) navigator.vibrate([300, 100, 300, 100, 500]);
+  if (navigator.vibrate) navigator.vibrate([300, 100, 300, 100, 500]);
 
-    var masterGain = ctx.createGain();
+  var masterGain = ctx.createGain();
   masterGain.gain.value = 1.0;
   masterGain.connect(ctx.destination);
 
@@ -1348,30 +1346,9 @@ function playAlarm() {
     fc++;
     if (fc >= 6) { clearInterval(fi); body.style.background = ''; }
   }, 200);
-  } catch(e) {}
 }
 
 function _ensureAlarmCtx() { _getActx(); } // 兼容旧调用
-
-// ====== 系统通知（Notification API）======
-// iOS Safari 17.0+ 支持 Web Push / Notification（需用户授权）
-// 锁屏、后台时系统会弹出通知+系统声音
-function requestNotifyPermission() {
-  if (!('Notification' in window)) return;
-  if (Notification.permission === 'default') {
-    Notification.requestPermission().catch(function(){});
-  }
-}
-
-function sendPomoNotification() {
-  if (!('Notification' in window)) return;
-  if (Notification.permission !== 'granted') return;
-  try {
-    var title = '🍅 番茄钟完成！';
-    var body = '专注时间结束，休息一下吧～';
-    new Notification(title, { body: body, icon: 'data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍅</text></svg>' });
-  } catch(e) {}
-}
 function _unlockAlarmAudio() { // 兼容旧调用
   var ctx = _getActx();
   if (ctx && ctx.state === 'suspended') ctx.resume();
