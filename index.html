@@ -1149,8 +1149,8 @@ function pomoTick() {
   if (left <= 0) {
     // 先播音/通知，再 stopPomo（否则 stopPomo 内的 _cancelScheduledAlarm 会取消预调度音符）
     if (pomo.sound) {
-      playAlarm();              // 前台音频（页面可见时有效）
-      sendPomoNotification();   // 系统通知（后台/锁屏时有效）
+      try { playAlarm(); } catch(e) {}          // 前台音频
+      try { sendPomoNotification(); } catch(e) {}  // 系统通知
     }
     stopPomo();
     pomo.sessions++;
@@ -1309,13 +1309,14 @@ function _cancelScheduledAlarm() {
 
 // 立即播放（试听 / 兼容旧调用）
 function playAlarm() {
-  var ctx = _getActx();
-  if (!ctx) return;
-  if (ctx.state === 'suspended') ctx.resume();
+  try {
+    var ctx = _getActx();
+    if (!ctx) return;
+    if (ctx.state === 'suspended') ctx.resume();
 
-  if (navigator.vibrate) navigator.vibrate([300, 100, 300, 100, 500]);
+    if (navigator.vibrate) navigator.vibrate([300, 100, 300, 100, 500]);
 
-  var masterGain = ctx.createGain();
+    var masterGain = ctx.createGain();
   masterGain.gain.value = 1.0;
   masterGain.connect(ctx.destination);
 
@@ -1347,6 +1348,7 @@ function playAlarm() {
     fc++;
     if (fc >= 6) { clearInterval(fi); body.style.background = ''; }
   }, 200);
+  } catch(e) {}
 }
 
 function _ensureAlarmCtx() { _getActx(); } // 兼容旧调用
